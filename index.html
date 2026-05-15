@@ -39,13 +39,27 @@
       overflow: hidden;
     }
 
-    .channel-img {
+    /* القسم العلوي الجديد بدلاً من الصورة الفارغة */
+    .channel-header {
       width: calc(100% + 60px);
-      height: 180px;
-      background: url('https://via.placeholder.com/400x180/00d2ff/ffffff?text=YHEA+EL+BARON') no-repeat center center;
-      background-size: cover;
+      height: 140px;
+      background: rgba(0, 210, 255, 0.05);
       margin: -30px -30px 20px -30px;
       border-bottom: 2px solid #00d2ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .channel-header p {
+      color: #00d2ff;
+      font-size: 17px;
+      font-weight: bold;
+      margin: 0;
+      line-height: 1.6;
+      text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
     }
 
     h2 {
@@ -54,7 +68,7 @@
       color: #00d2ff;
     }
 
-    p {
+    .info-text {
       font-size: 14px;
       color: #cbd5e1;
       margin-bottom: 25px;
@@ -113,10 +127,12 @@
 <body>
 
 <div class="box">
-  <div class="channel-img"></div>
+  <div class="channel-header">
+    <p>الرجاء إكمال جميع الشروط لفتح موقع تنزيل رابط التحميل</p>
+  </div>
 
   <h2>🔒 نظام التحقق</h2>
-  <p>يرجى إكمال المهام لفتح الرابط</p>
+  <p class="info-text">يرجى إكمال المهام لفتح الرابط</p>
 
   <a href="https://www.youtube.com/@YHEAEBARON?sub_confirmation=1"
      target="_blank" id="subBtn" class="btn sub" onclick="startTimer('sub')">
@@ -137,7 +153,7 @@
     <span id="unlockText">بانتظار التحقق...</span>
   </button>
 
-  <a id="downloadArea" href="https://drive.usercontent.google.com/download?id=1Ggryu7rKbCYaT2Dw-_kcugbewfbkxfXD&export=download" class="hidden" target="_blank">
+  <a id="downloadArea" href="#" class="hidden" target="_blank">
     <button class="btn download">⬇ تحميل الملف الآن</button>
   </a>
 
@@ -150,7 +166,7 @@
   let subDone = false;
   let likeDone = false;
   let commentDone = false;
-  const TASK_TIME = 25000;
+  const TASK_TIME = 25000; // وقت الانتظار 25 ثانية
 
   function startTimer(type) {
     let btn, text;
@@ -190,10 +206,8 @@
   function enableUnlock() {
     if (subDone && likeDone && commentDone) {
       const unlockBtn = document.getElementById('unlockBtn');
-
       unlockBtn.disabled = false;
       unlockBtn.classList.add('ready');
-
       document.getElementById('unlockText').innerText = "فتح الرابط الآن";
     }
   }
