@@ -39,11 +39,12 @@
       overflow: hidden;
     }
 
-    /* القسم العلوي الجديد بدلاً من الصورة الفارغة */
+    /* القسم العلوي مع خلفية مميزة */
     .channel-header {
       width: calc(100% + 60px);
       height: 140px;
-      background: rgba(0, 210, 255, 0.05);
+      /* خلفية متدرجة احترافية */
+      background: linear-gradient(135deg, rgba(0, 210, 255, 0.2), rgba(58, 123, 213, 0.2));
       margin: -30px -30px 20px -30px;
       border-bottom: 2px solid #00d2ff;
       display: flex;
@@ -51,15 +52,28 @@
       justify-content: center;
       padding: 20px;
       box-sizing: border-box;
+      position: relative;
+    }
+
+    /* إضافة تأثير إضاءة خلف النص */
+    .channel-header::after {
+      content: "";
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: #00d2ff;
+      filter: blur(50px);
+      opacity: 0.3;
     }
 
     .channel-header p {
-      color: #00d2ff;
+      color: #fff; /* غيرنا اللون للأبيض ليبرز فوق الخلفية */
       font-size: 17px;
       font-weight: bold;
       margin: 0;
       line-height: 1.6;
-      text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+      z-index: 1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     h2 {
@@ -166,7 +180,7 @@
   let subDone = false;
   let likeDone = false;
   let commentDone = false;
-  const TASK_TIME = 25000; // وقت الانتظار 25 ثانية
+  const TASK_TIME = 25000;
 
   function startTimer(type) {
     let btn, text;
