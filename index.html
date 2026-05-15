@@ -39,13 +39,10 @@
       overflow: hidden;
     }
 
-    /* القسم العلوي مع صورة خلفية ألعاب */
+    /* القسم العلوي مع خلفية صورة ألعاب - تم إصلاح الرابط وإضافة طبقة تعتيم */
     .channel-header {
       width: calc(100% + 60px);
-      height: 160px; /* زدنا الارتفاع قليلاً لتبرز الصورة */
-      /* هنا نضع رابط صورة الألعاب */
-      background: url('https://images.unsplash.com/photo-1580894911309-8b0b9a9528f5?q=80&w=2070') no-repeat center center;
-      background-size: cover;
+      height: 160px;
       margin: -30px -30px 20px -30px;
       border-bottom: 2px solid #00d2ff;
       display: flex;
@@ -54,14 +51,18 @@
       padding: 20px;
       box-sizing: border-box;
       position: relative;
+      /* تم تصحيح رابط الصورة هنا */
+      background: url('https://images.unsplash.com/photo-1620002166549-3660a92e6224?q=80&w=2070') no-repeat center center;
+      background-size: cover;
     }
 
-    /* طبقة تعتيم فوق الصورة لضمان وضوح النص */
+    /* طبقة التعتيم لضمان وضوح النص - لا تنسى هذا الجزء */
     .channel-header::before {
       content: "";
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.5); /* تعتيم بنسبة 50% */
+      background: rgba(0, 0, 0, 0.6); /* تعتيم بنسبة 60% لضمان وضوح النص */
+      z-index: 0; /* تأكد من أنها خلف النص */
     }
 
     .channel-header p {
@@ -70,7 +71,7 @@
       font-weight: bold;
       margin: 0;
       line-height: 1.6;
-      z-index: 1; /* ليكون النص فوق طبقة التعتيم */
+      z-index: 1; /* تأكد من أنه فوق طبقة التعتيم */
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
     }
 
@@ -178,7 +179,7 @@
   let subDone = false;
   let likeDone = false;
   let commentDone = false;
-  const TASK_TIME = 25000;
+  const TASK_TIME = 25000; // مدة الانتظار 25 ثانية
 
   function startTimer(type) {
     let btn, text;
