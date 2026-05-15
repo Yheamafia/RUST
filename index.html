@@ -32,14 +32,13 @@
       backdrop-filter: blur(15px);
       padding: 30px;
       border-radius: 24px;
-      width: 360px;
+      width: 380px;
       text-align: center;
       box-shadow: 0 0 40px rgba(0, 210, 255, 0.3);
       border: 1px solid rgba(255,255,255,0.1);
       overflow: hidden;
     }
 
-    /* القسم العلوي مع خلفية صورة ألعاب - تم إصلاح الرابط وإضافة طبقة تعتيم */
     .channel-header {
       width: calc(100% + 60px);
       height: 160px;
@@ -51,28 +50,26 @@
       padding: 20px;
       box-sizing: border-box;
       position: relative;
-      /* تم تصحيح رابط الصورة هنا */
-      background: url('https://images.unsplash.com/photo-1620002166549-3660a92e6224?q=80&w=2070') no-repeat center center;
+      background: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071') no-repeat center center;
       background-size: cover;
     }
 
-    /* طبقة التعتيم لضمان وضوح النص - لا تنسى هذا الجزء */
     .channel-header::before {
       content: "";
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6); /* تعتيم بنسبة 60% لضمان وضوح النص */
-      z-index: 0; /* تأكد من أنها خلف النص */
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 0;
     }
 
     .channel-header p {
       color: #fff;
-      font-size: 17px;
+      font-size: 18px;
       font-weight: bold;
       margin: 0;
       line-height: 1.6;
-      z-index: 1; /* تأكد من أنه فوق طبقة التعتيم */
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      z-index: 1;
+      text-shadow: 0 2px 15px rgba(0, 210, 255, 0.8);
     }
 
     h2 {
@@ -120,6 +117,7 @@
       color: #000;
       margin-top: 20px;
       animation: pulse 2s infinite;
+      text-decoration: none;
     }
 
     @keyframes pulse {
@@ -166,9 +164,12 @@
     <span id="unlockText">بانتظار التحقق...</span>
   </button>
 
-  <a id="downloadArea" href="#" class="hidden" target="_blank">
-    <button class="btn download">⬇ تحميل الملف الآن</button>
-  </a>
+  <div id="downloadArea" class="hidden">
+    <a href="https://drive.google.com/file/d/1baDGp1PRRN6a6dOLM6LtB6xHnPtNUdEX/view?usp=sharing"
+       class="btn download" target="_blank">
+      ⬇ تحميل الملف الآن (8.15 GB)
+    </a>
+  </div>
 
   <div class="footer">
     POWERED BY YHEA GAMING © 2026
@@ -179,7 +180,7 @@
   let subDone = false;
   let likeDone = false;
   let commentDone = false;
-  const TASK_TIME = 25000; // مدة الانتظار 25 ثانية
+  const TASK_TIME = 18000; // تم تعديل الوقت هنا ليكون 18 ثانية
 
   function startTimer(type) {
     let btn, text;
